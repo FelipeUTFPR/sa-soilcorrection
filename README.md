@@ -1,23 +1,100 @@
-# Soil Correction
 
-This project is part of a joint effort with [Instituto de Desenvolvimento Rural do Paraná - IDR](http://www.idrparana.pr.gov.br). 
+#Etapa 5 Projeto de Arquitetura
 
-This project is a case study for undergraduates enrolled in the Software Architecture course at [Universidade Tecnológica Federal do Paraná - Cornélio Procópio](http://www.utfpr.edu.br/campus/cornelioprocopio). We use project based learning to build the software architecture. 
+## Concentração Ideal do Calcio:
 
-## PROJECT OVERVIEW
+45 a 55 % da CTC do Solo
 
-The project consists of determining: (i) ideal nutrient values for two soil types; (ii) the needed quantity of phosphor, potassium, calcium & magnesium; (iv) the total cost of each nutrient needed; (v) additional nutrients necessary, based on the nutrient source used. 
+## Concentração Ideal do Magnésio:
 
-Current nutrient values are identified from a laboratory analysis of soil samples. These values are used as input for determining the elements aforementioned.
+10 a 15 % da CTC do Solo
 
-Currently, IDR uses a spreadsheet to determining the values they need. The goal is to replace the spreadsheet with a cloud native software system.
+## Quantidade de Ca a Ser adicionada para a Saturação Desejada (qtdDesejadaCa)
 
-## PROGRESS
+Teor Calcio no solo atual (Cmol/dm³) * saturação Desejada(%)/saturação atual(%) -
 
-Checkout published releases to follow the project progress.
+ Teor Calcio no solo atual (Cmol/dm³) - Ca aplicado na Fosfotagem (Cmol/dm³)
 
-### As of June, 2021
+## Quantidade de Ca obtida com a Fosfotagem. (qtdCaFosfotagem)
 
-About 30 students worked on this project in its first cycle, started in March, 2021. During this period, students learned on the impact of development principles on software architecture. They mainly practiced DRY and SOLID principles. They understood how modern programming language constructs can facilitate the archicture maintenance. They used UML to understand each other's architectural structures, focusing on classes (static structure) and message exchange (dynamic structure).
+### Quantidade de Cao em kg/Alqueire numa fonte qualquer de fosforo
 
-In addition, they practiced software testing, TDD, VCS with Git/Github, and software development with Java.
+Quantidade aplicada de alguma fonte de fosforo (kg/Alqueire) * Fonte que contém a Cao(%)
+
+### Quantidade de Cao em Kg/Hectare
+
+Quantidade de Cao em kg/Alqueire * 2.42
+
+### Quantidade de Ca obtida com a Fosfotagem, portanto:
+
+Quantidade de Cao em kg/hectare * (?qtd de Cao adicionada na fosfotagem?) /1000
+
+## Quantidade de Ca em Cmol/dm³ adicionado em 1 Hectare numa fonte qualquer de Calcio. (qtdCaFontePorHe)
+
+ Fonte de Calcio que contém a CaO(%) * 0,01783 (cmol/dm³ de ca)
+
+## Quantidade Total de Ca (qtdTotalCa)
+
+Ca da fonte de cálcio + Ca da fonte de Fosforo
+
+## Quantidade corretivo a incorporar (qtdCorretivoIncorporar)
+
+Teor de calcio que precisa ser adicionado/quantidade total de Calcio adicionado
+
+## Quantidade Calcio adicionada /Ha (qtdCalcioPorHa)
+
+Quantidade corretivo a incorporar * quantidade total de Calcio adicionado
+
+## Quantidade de Fonte de Calcio a Adicionar em Toneladas/Hectare (qtdFonteCalcioAdicionarHa)
+
+Quantidade de corretivo a incorporar*100/PRNT
+
+## Quantidade de Fonte de Calcio a Adicionar em Toneladas/Alqueire  (qtdFonteCalcioAdicionarAl)
+
+Quantidade de Fonte de Calcio a adionar em Toneladas/hectare * 2.42
+
+## Quantidade corretiva a incorporar Total: (qtdCorretivoTotal)
+
+Quantidade de corretivo a incorporar * Area do Talhão
+
+## Custo por Alqueire (CustoAl)
+
+Valor em toneladas da fonte * Quantidade de Fonte de Calcio Adicionada em Toneladas/Alqueire
+
+## Custo Total (CustoTotal)
+
+Valor em toneladas da fonte * Quantidade corretiva a incorporar total
+
+
+## Fontes de Calcio e Magnésio:
+
+
+Fonte						| Calcio %				- Magnésio %
+
+1. Calcário Dolomítico        30.4         -            18
+2. Calcário Calcítico         56			-			5
+3. Calcário Concha            54			-			0
+4. Gesso Agricola			  29			-			0
+5. Hidróxido de Calcio		  75.7			-			0
+6. Calcário Magnesiano	      35			-		   10
+
+	
+## Valores ???? que a Célula A105(memória de Calculo) podem assumir de acordo com a fonte de Fosforo:
+
+
+Fonte						| Valor			
+
+1. Super fosfato Simples        0,49924                    
+2. Super fosfato Triplo         0,33877					
+3. Map               			0,0			
+4. DAP			    			0,0			
+5. Yoorin		    			0,49924			
+6. Fosfato Arad	        		0,92716			  
+7. Fosfato Gafsa                0,92716                
+8. Fosfato Daoui         		0,80235				
+9. Fosf. Patos de Minas         0,49924						
+10. Escória de thomas			0,795218						
+11. Ácido Fosfórico	     		0,0			
+12. Multif. Magnesiano      	0,0		
+
+		   

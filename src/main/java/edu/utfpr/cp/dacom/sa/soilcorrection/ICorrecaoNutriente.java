@@ -53,4 +53,49 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
 
         return qtdeNutrienteAdicionar / eficienciaNutriente;
     }
+    
+    //Primeiro método Criado: Quantidade de Cao em kg/Alqueire numa fonte qualquer de fosforo
+    
+    public default double calculaQtdCaoKgAlqueire(double qtdAplicadaFonteKgAl, T caoFonteFosforo) {
+
+        if (qtdAplicadaFonteKgAl <= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return qtdAplicadaFonteKgAl * caoFonteFosforo.getTeorFonte();
+    }
+    
+    //Segundo método Criado: Quantidade de Cao em Kg/Hectare
+    
+    public default double calculaQtdCaoKgHectare(double QtdCaoKgAlqueire) {
+
+
+        return QtdCaoKgAlqueire * 2.42;
+    }
+    
+    //Terceiro método Criado:Quantidade de Ca obtida com a Fosfotagem, portanto
+  
+    
+    
+    public default double qtdCaFosfotagem(double qtdCaoKgHectare, double qtdAdicionadaFosfotagem) {
+
+
+        return qtdCaoKgHectare * qtdAdicionadaFosfotagem/1000;
+        
+    }
+    
+  //Quarto método Criado: Quantidade de Ca em Cmol/dm³ adicionado em 1 Hectare numa fonte qualquer de Calcio.
+    
+    public default double qtdCaFontePorHe(T caoFonteCalcio) {
+
+
+        return caoFonteCalcio.getTeorFonte() * 0.01783;
+        
+    }
+    
+   
+    
+    
+    
+    
 }
