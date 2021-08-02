@@ -70,17 +70,17 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
     public default double calculaQtdCaoKgHectare(double QtdCaoKgAlqueire) {
 
 
-        return QtdCaoKgAlqueire * 2.42;
+        return QtdCaoKgAlqueire / 2.42;
     }
     
     //Terceiro método Criado:Quantidade de Ca obtida com a Fosfotagem, portanto
   
     
     
-    public default double qtdCaFosfotagem(double qtdCaoKgHectare, double qtdAdicionadaFosfotagem) {
+    public default double qtdCaFosfotagemCmolm3(double caFosfatagemConv, T qtdCaoKgHectare) {
 
 
-        return qtdCaoKgHectare * qtdAdicionadaFosfotagem/1000;
+        return caFosfatagemConv * qtdCaoKgHectare.getTeorFonte()/1000;
         
     }
     
@@ -89,7 +89,7 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
     public default double qtdCaFontePorHe(T caoFonteCalcio) {
 
 
-        return caoFonteCalcio.getTeorFonte() * 0.01783;
+        return caoFonteCalcio.getTeorFonte() * 0.01783 * 100;
         
     }
     

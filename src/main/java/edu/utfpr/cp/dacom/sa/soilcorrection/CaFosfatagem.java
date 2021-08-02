@@ -2,15 +2,26 @@ package edu.utfpr.cp.dacom.sa.soilcorrection;
 
 import java.util.Set;
 
-public enum FonteFosforo implements IFonteNutriente {
-    SUPERFOSFATO_SIMPLES(0.18, Set.of(new NutrienteAdicional(NomeNutrienteAdicional.CALCIO, 0.28))),
-    SUPERFOSFATO_TRIPO(0.41, Set.of(new NutrienteAdicional(NomeNutrienteAdicional.CALCIO, 0.2))),
-    MAP(0.48, Set.of(new NutrienteAdicional(NomeNutrienteAdicional.CALCIO, 0.09)));
+public enum CaFosfatagem implements IFonteNutriente {
+	SUPERFOSFATO_SIMPLES(0.49924, Set.of()),
+    SUPERFOSFATO_TRIPO(0.33877, Set.of()),
+    MAP(0.0, Set.of()),
+	DAP(0.0, Set.of()),
+	YOORIN(0.49924, Set.of()),
+	FOSFATO_ARAD(0.92716, Set.of()),
+	FOSFATO_GAFSA(0.92716, Set.of()),
+	FOSFATO_DAOUI(0.80235, Set.of()),
+	FOSF_PATOS_MINAS(0.49924, Set.of()),
+	ESCORAI_DE_THOMAS(0.795218, Set.of()),
+	ACIDO_FOSFORICO(0.0, Set.of()),
+	MULTIF_MAGNESIANO(0.0, Set.of());
+	
+	
 
     private final double teorFonte;
     private final Set<NutrienteAdicional> nutrientesAdicionais;
 
-    FonteFosforo(
+    CaFosfatagem(
         double teorFonte,
         final Set<NutrienteAdicional> nutrientesAdicionais) {
 
@@ -27,4 +38,6 @@ public enum FonteFosforo implements IFonteNutriente {
     public Set<NutrienteAdicional> getNutrientesAdicionais() {
         return this.nutrientesAdicionais;
     }
+    
+
 }
