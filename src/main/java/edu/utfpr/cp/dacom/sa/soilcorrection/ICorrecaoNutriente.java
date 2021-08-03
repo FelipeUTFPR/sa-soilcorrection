@@ -94,8 +94,38 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
     }
     
    
+  //Quinto método: Quantidade de magnésio extraido com a calagem
+	
+  		public default double qtdMagnesioFonteCalcio (
+  		        T fonteMagnesio,
+  		        double qtdCorrIncorporar) {
+
+
+  		            return fonteMagnesio.getTeorFonte() * 0.0248 * qtdCorrIncorporar ;
+  		    }
+  		
+  		
+  		
+   //Sexto método: Quantidade de magnésio extraido com a Potassagem
+  		
+  		public default double qtdMagnesioFontePotassio (
+  		        T fonteMagnesio,
+  		        double qtdKgHeFosfatagem) {
+
+
+  		            return fonteMagnesio.getTeorFonte() * 0.0248 * qtdKgHeFosfatagem/1000*0.6;
+  		    }  		
     
     
-    
-    
+  //Sétimo método: Quantidade de magnésio extraido com a Fosfatagem
+  		
+  		public default double qtdMagnesioFonteFosforo (
+  		        T fonteMagnesio) {
+
+
+  		            return fonteMagnesio.getTeorFonte() * 0.0248 * 0.6 ;
+  		    }  
+  		
+
+
 }

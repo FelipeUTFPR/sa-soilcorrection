@@ -17,11 +17,12 @@ public class CorrecaoCalcio implements ICorrecaoNutriente<FonteCalcio> {
 	public double calcularQtdDesejadaCa (
 	        double teorCalcioAtual,
 	        double saturacaoDesejada,
-	        double qtdCaFosfotagem) {
+	        double qtdCaFosfotagem,
+	        double saturacaoAtual) {
 
 
-	            return  teorCalcioAtual *
-	            		saturacaoDesejada -
+	            return  (teorCalcioAtual *
+	            		saturacaoDesejada/saturacaoAtual) -
 	            		teorCalcioAtual -
 	            		qtdCaFosfotagem;
 	    }
