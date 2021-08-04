@@ -1,30 +1,26 @@
 package edu.utfpr.cp.dacom.sa.soilcorrection;
 
-public class NutrienteAdicional {
+import java.util.Set;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@RequiredArgsConstructor //Notação para criar Construtor da classe
+@Getter //Notação para criar método get em tempo de compilação
+@Setter //Notação para criar método set em tempo de compilação
+public class NutrienteAdicional {
+	
+	@Setter(value = AccessLevel.NONE)
     private final NomeNutrienteAdicional nome;
+    
     private final double teorNutriente;
 
     private double correcaoAdicional;
 
-    public NutrienteAdicional(
-        final NomeNutrienteAdicional nome, 
-        double teorNutriente) {
+    
 
-        this.nome = nome;
-        this.teorNutriente = teorNutriente;
-    }
-
-    public double getTeorNutriente() {
-        return this.teorNutriente;
-    }
-
-    public void setCorrecaoAdicional(double correcaoAdicional) {
-        this.correcaoAdicional = correcaoAdicional;
-    }
-
-    public double getCorrecaoAdicional() {
-        return this.correcaoAdicional;
-    }
+ 
     
 }
