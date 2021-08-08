@@ -1,7 +1,9 @@
 package edu.utfpr.cp.dacom.sa.soilcorrection;
 
-public class CorrecaoCalcio implements ICorrecaoNutriente<FonteCalcio> {
+public class CorrecaoCalcioMagnesio implements ICorrecaoNutriente<FonteCalcioMagnesio> {
 
+	//CORREÇÃO CALCIO
+	
 	//Método 1: Quantidade Total de Ca a aplicar
 	
 	public double calcularQtdCaAplicar (
@@ -82,7 +84,7 @@ public class CorrecaoCalcio implements ICorrecaoNutriente<FonteCalcio> {
 	            return qtdCorretivoIncorporar * areaTalhao;
 	    }
 	
-	//Método 8: Custo do Corretivo por Alqueire
+	//Método 8: Custo do Corretivo por Alqueire ->>Pode ser usada a interface ICorreçãoNutriente
 
 	
 	public double CustoCorretivoAl (
@@ -103,5 +105,34 @@ public class CorrecaoCalcio implements ICorrecaoNutriente<FonteCalcio> {
 
 	            return valorTonFonte * qtdCorretivoTotal;
 	    }
+	
+	//CORREÇÃO MAGNÉSIO
+	
+	//método 1: Soma Fontes de Magnésio
+	
+			public  double somaFonteMagnesio (
+			        double fonteMgFosfatagem,
+			        double fonteMgCalagem,
+			        double fonteMgPotassagem,
+			        double fonteMgAtual) {
+
+
+			            return fonteMgFosfatagem +
+			            	   fonteMgCalagem +
+			            	   fonteMgPotassagem +
+			            	   fonteMgAtual;
+			    } 
+			
+			
+			//método 2: Participação do Magnésio Após Correção
+			
+					public  double mgPosCorrecao (
+					        double somaFonteMagnesio,
+					        double ctc) {
+
+
+					            return somaFonteMagnesio/ctc * 100;
+					    } 
+			
 	
 }

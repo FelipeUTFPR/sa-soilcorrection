@@ -2,11 +2,12 @@ package edu.utfpr.cp.dacom.sa.soilcorrection;
 
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 
-@RequiredArgsConstructor //Notação para criar Construtor da classe
+
+@AllArgsConstructor //Notação para criar Construtor da classe
 @Getter //Notação para criar método get em tempo de compilação
 
 public enum FonteMagnesio implements IFonteNutriente{

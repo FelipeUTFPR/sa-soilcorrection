@@ -7,4 +7,7 @@ public record NutrientesCTC (
     double magnesio,
     double enxofre,
     double aluminio,
-    double aluminioHidrogenio) {}
+    double aluminioHidrogenio) {
+	
+	
+}

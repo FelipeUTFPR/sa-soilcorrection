@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestaCorrecaoCalcio {
+class TestaCorrecaoCalcioMagnesio {
+	
+	//TESTE CORREÇÃO CALCIO
 
 	@Test
     public void testarQtdCaoKgAlqueireFosfotagem() {
@@ -39,14 +41,14 @@ class TestaCorrecaoCalcio {
     @Test
     public void TestaqQtdCaFosfotagemCmolm3() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
 
         double QtdCaoKgHectareFosfotagem = 34.70;
         
 
         assertEquals(0.017, 
              correcaoCalcio.qtdCaFosfotagemCmolm3(QtdCaoKgHectareFosfotagem,
-            		 								FonteCalcio.SUPERFOSFATO_SIMPLES), 0.05);
+            		 								FonteCalcioMagnesio.SUPERFOSFATO_SIMPLES), 0.05);
                 
 
     }
@@ -54,12 +56,12 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaQtdCaFontePorHe() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
 
         
 
         assertEquals(0.998, 
-             correcaoCalcio.qtdCaFontePorHe(FonteCalcio.CALCARIO_CALCITICO),0.5);
+             correcaoCalcio.qtdCaFontePorHe(FonteCalcioMagnesio.CALCARIO_CALCITICO),0.5);
                 
 
     }
@@ -68,7 +70,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaQtdCaAplicar() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var QtdCaFontePorHe = 0.998;
     	var QtdCaFosfotagemCmolm3 = 0.017;
@@ -84,7 +86,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaQtdDesejadaCa() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var teorCalcioAtual = 5.76;
     	var saturacaoAtual = 44.7	;	
@@ -105,7 +107,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaqtdCorretivoIncorporar() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var qtdDesejadaCa = 1.312;
         var QtdCaAplicar = 0.998;
@@ -121,7 +123,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaqtdCalcioPorHa() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var qtdCorretivoIncorporar = 1.29;
         var qtdTotalCa = 1.016;
@@ -137,7 +139,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaqtdFonteCalcioAdicionarHa() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var qtdCorretivoIncorporar = 1.29;
         var prnt = 70;
@@ -153,7 +155,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaqtdFonteCalcioAdicionarAl() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var qtdFonteCalcioAdicionarHa = 1.85;
         
@@ -170,7 +172,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaqtdCorretivoTotal() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var qtdCorretivoIncorporar = 1.29;
     	var areaTalhao = 4.84;
@@ -187,7 +189,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaCustoCorretivoAl() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var valorTonFonte = 500;
     	var qtdFonteCalcioAdicionarAl = 4.47;
@@ -204,7 +206,7 @@ class TestaCorrecaoCalcio {
     @Test
     public void testaCustoCorretivoTotal() {
     	
-    	var correcaoCalcio = new CorrecaoCalcio();
+    	var correcaoCalcio = new CorrecaoCalcioMagnesio();
     	
     	var valorTonFonte = 500;
     	var qtdCorretivoTotal = 6.25;
@@ -214,8 +216,81 @@ class TestaCorrecaoCalcio {
 
         assertEquals(3126.05, 
              correcaoCalcio.CustoCorretivoAl(valorTonFonte,qtdCorretivoTotal),0.5);
-                
+        
+        //TESTE CORREÇÃO MAGNÉSIO
 
     }
+    
+	@Test
+    public void testarQtdMagnesioFonteCalcio() {
+
+        var correcaoMagnesio = new CorrecaoMagnesio();
+
+        var qtdCorrIncorporar = 1.29;
+
+        assertEquals(
+            0.16018, 
+            correcaoMagnesio.qtdMagnesioFonteCalcio(FonteMagnesio.CALCARIO_CALCITICO, qtdCorrIncorporar),0.05);
+    }
+	
+	@Test
+    public void testarQtdMagnesioFontePotassio() {
+
+        var correcaoMagnesio = new CorrecaoMagnesio();
+
+        var qtdKgHePotassagem = 450.55;
+
+        assertEquals(
+            0.0, 
+            correcaoMagnesio.qtdMagnesioFontePotassio(FonteMagnesio.CLORETO_POTASSIO, qtdKgHePotassagem));
+    }
+
+    @Test
+    public void testarQtdMagnesioFonteFosfatagem() {
+
+    	 var correcaoMagnesio = new CorrecaoMagnesio();
+
+         
+
+         assertEquals(
+             0.0, 
+             correcaoMagnesio.qtdMagnesioFonteFosforo(FonteMagnesio.SUPERFOSFATO_SIMPLES),0.05);
+    }
+    
+    
+    @Test
+    public void testarSomaFonteMagnesio() {
+
+    	 var correcaoMagnesio = new CorrecaoMagnesio();
+    	 var fonteMgFosfatagem = 0;
+	     var fonteMgCalagem = 0.16018;
+	     var fonteMgPotassagem = 0;
+	     var fonteMgAtual = 1.63;
+
+         
+
+         assertEquals(
+             1.79, 
+             correcaoMagnesio.somaFonteMagnesio(
+            		 fonteMgFosfatagem,
+                     fonteMgCalagem,
+                     fonteMgPotassagem,
+                     fonteMgAtual), 0.05);
+    }
+    
+    @Test
+    public void testarMgPosCorrecao() {
+
+    	 var correcaoMagnesio = new CorrecaoMagnesio();
+    	 var somaFonteMagnesio = 1.79;
+    	 var ctc = 12.89;
+
+         
+
+         assertEquals(
+             13.9, 
+             correcaoMagnesio.mgPosCorrecao(somaFonteMagnesio,ctc),0.05);
+    }
+		
 
 }

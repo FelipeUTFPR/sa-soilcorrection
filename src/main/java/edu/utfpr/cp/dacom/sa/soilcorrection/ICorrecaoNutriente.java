@@ -65,7 +65,7 @@ public interface ICorrecaoNutriente<T extends IFonteNutriente> {
         return qtdAplicadaFonteKgAl * caoFonteFosforo.getTeorFonte();
     }
     
-    //Segundo método Criado: Quantidade de Cao em Kg/Hectare
+    //Segundo método Criado: Quantidade de Cao em Kg/Hectare (Cáculo de Conversão)
     
     public default double calculaQtdCaoKgHectare(double QtdCaoKgAlqueire) {
 
